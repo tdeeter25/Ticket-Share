@@ -1,0 +1,65 @@
+<div class="page-header text-center">
+	<h1>Post a Ticket to Sell</h1>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+	<div class="well">
+		<!-- create a product form -->
+		<div class="page-header text-center">
+			<h3>Add a Ticket</h3>
+		</div>
+
+		<form id="createProductForm" ng-submit="admin.createProduct()" novalidate>
+			<!-- name -->
+			<div class="form-group">
+				<label>Your Name</label>
+				<input type="text" class="form-control" ng-model="admin.productData.name" required>
+			</div>
+
+			<!-- price -->
+			<div class="form-group">
+				<label>Price</label>
+				<input type="text" class="form-control" ng-model="admin.productData.price" required>
+			</div>
+
+			<!-- pick-up location-->
+			<div class="form-group">
+				<label>Pick-Up Location</label>
+				<input type="text" class="form-control" ng-model="admin.productData.pickuplocation" required>
+			</div>
+
+			<!-- category -->
+			<div class="form-group">
+				<label>Game</label>
+				<select class="form-control" ng-model="admin.productData.category" 
+					ng-options="category.instance.id as category.instance.name for category in admin.categories">					
+				</select>
+			</div>
+
+			<!-- description -->
+			<div class="form-group">
+				<label>Description</label>
+				<textarea rows="5" class="form-control" ng-model="admin.productData.description" required></textarea>
+			</div>
+
+
+			<!-- show a preview -->
+			<div class="well" ng-show="pictures">
+				<img class="img-responsive" ngf-src="pictures">
+			</div>
+
+			<!-- show the success message and a link -->
+			<div class="alert alert-success" ng-show="admin.successMessage">
+				{{ admin.successMessage }} 
+				<a ui-sref="product({ id: admin.newProductId, name: admin.newProductName })">View it now!</a>
+			</div>
+
+			<!-- submit -->
+			<button type="submit" class="btn btn-primary btn-block">Create Product</button>
+		</form>
+
+	</div>
+	</div>
+
+	
